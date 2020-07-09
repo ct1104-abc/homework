@@ -1,4 +1,8 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="club.banyuan.eneity.Product" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="club.banyuan.service.ProductService" %>
+<%@ page import="club.banyuan.service.impl.ProductServiceImpl" %><%--
   Created by IntelliJ IDEA.
   User: edz
   Date: 2020/7/8
@@ -39,6 +43,14 @@
                             <input name=""  type="checkbox" id="rem_u"  />
                             <span for="rem_u">下次自动登录</span>
                         </dd>
+                        <%
+                            List<Product> productList=new ArrayList<>();
+                            ProductService productService=new ProductServiceImpl();
+                            productList=productService.selectall();
+                            HttpSession session1=request.getSession();
+                            session1.setAttribute("productList",productList);
+
+                        %>
                         <dd class="buttom">
                             <input name="" type="submit" value="登 录" class="spbg buttombg f14 lf" />
                             <input name="" type="submit" value="注 册" class="spbg buttombg f14 lf" />

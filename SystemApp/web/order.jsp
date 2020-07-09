@@ -1,4 +1,6 @@
-<%--
+<%@ page import="club.banyuan.eneity.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: edz
   Date: 2020/7/8
@@ -44,86 +46,27 @@
             <li>起拍价</li>
             <li class="borderno">操作</li>
         </ul>
+
+        <%
+
+            List<Product> productList=(ArrayList<Product>)session.getAttribute("productList");
+                for(Product product:productList){
+        %>
         <ul class="rows">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
+            <li><a href="国书" title=""><%=product.getPname()%></a></li>
+            <li class="list-wd"><%=product.getDescription()%></li>
+            <li><%=product.getBeginTime()%></li>
+            <li><%=product.getEndTime()%></li>
+            <li><%=product.getBeginprice()%></li>
+            <li class="borderno red"><a href="auction.jsp">竞拍</a></li>
+
         </ul>
-        <ul class="rows even">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
-        <ul class="rows">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
-        <ul class="rows even">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
-        <ul class="rows">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
-        <ul class="rows even">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
-        <ul class="rows">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
-        <ul class="rows even">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
-        <ul class="rows">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
-        <ul class="rows even">
-            <li><a href="国书" title="">国书</a></li>
-            <li class="list-wd">明国藏书</li>
-            <li>2010-01-20 12:30:30</li>
-            <li>2010-09-08 12:30:30</li>
-            <li>2,000</li>
-            <li class="borderno red"><a href="#">竞拍</a></li>
-        </ul>
+        <%
+            session.setAttribute("pid",product.getId());
+
+            }
+        %>
+
         <div class="page">
             <a href="#" title="">首页</a>
             <a href="#" title="">上一页</a>

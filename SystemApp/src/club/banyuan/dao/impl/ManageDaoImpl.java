@@ -15,6 +15,7 @@ public class ManageDaoImpl extends BaseDaoImpl implements ManageDao {
     @Override
     public Manage getLogin(String loginName, String password) {
         String sql="select * from manage where loginName=? and password=?";
+
         ResultSet rs=executeQuery(sql, new Object[]{loginName,password} );
         Manage manage=null;
         try {

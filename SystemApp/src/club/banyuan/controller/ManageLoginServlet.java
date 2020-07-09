@@ -1,7 +1,10 @@
 package club.banyuan.controller;
 
+import club.banyuan.eneity.Manage;
 import club.banyuan.eneity.User;
+import club.banyuan.service.ManageService;
 import club.banyuan.service.UserService;
+import club.banyuan.service.impl.ManageServiceImpl;
 import club.banyuan.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
@@ -17,12 +20,11 @@ public class ManageLoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String loginName=request.getParameter("loginName");
         String password=request.getParameter("password");
-        UserService userService=new UserServiceImpl();
-        User user=null;
+        ManageService manageService=new ManageServiceImpl();
+        Manage manage =null;
         try {
-            user=userService.login(loginName,password);
-            //System.out.println(user.getLoginName());
-            if(user!=null){
+            manage=manageService.login(loginName,password);
+            if(manage!=null){
                 request.getRequestDispatcher("manageorder.jsp").forward(request,response);
                 return;
             }

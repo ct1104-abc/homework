@@ -1,11 +1,14 @@
 package club.banyuan.dao.impl;
 
 import club.banyuan.dao.UserDao;
+import club.banyuan.eneity.Product;
 import club.banyuan.eneity.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     public UserDaoImpl(Connection connection) {
