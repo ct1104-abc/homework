@@ -23,6 +23,8 @@ public class LoginServlet extends HttpServlet {
         try {
             User user=userService.login(loginName,password);
             if(user!=null){
+                HttpSession session=request.getSession();
+                session.setAttribute("user",user);
                 request.getRequestDispatcher("order.jsp").forward(request,response);
                 return;
             }

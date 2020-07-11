@@ -46,7 +46,7 @@
                         <%
                             List<Product> productList=new ArrayList<>();
                             ProductService productService=new ProductServiceImpl();
-                            productList=productService.selectall();
+                            productList=productService.selectall(0);
                             HttpSession session1=request.getSession();
                             session1.setAttribute("productList",productList);
 

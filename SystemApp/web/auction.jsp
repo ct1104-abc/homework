@@ -1,4 +1,8 @@
-<%--
+<%@ page import="club.banyuan.eneity.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="club.banyuan.eneity.Auction" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="club.banyuan.eneity.User" %><%--
   Created by IntelliJ IDEA.
   User: edz
   Date: 2020/7/8
@@ -22,38 +26,43 @@
         <h1 class="lf">在线拍卖系统</h1>
         <div class="logout right"><a href="#" title="注销">注销</a></div>
     </div>
-    <a href="detail.do"></a>
+
     <div class="items sg-font lf">
+        <%
+            Product product=(Product) session.getAttribute("product");
+        %>
         <ul class="rows">
             <li>名称：</li>
-            <li class="borderno">花瓶</li>
+            <li class="borderno"><%=product.getPname()%></li>
         </ul>
         <ul class="rows">
             <li>描述：</li>
-            <li class="borderno">古董</li>
+            <li class="borderno"><%=product.getDescription()%></li>
         </ul>
         <ul class="rows">
             <li>开始时间：</li>
-            <li class="borderno">2010-01-01 16:30:00</li>
+            <li class="borderno"><%=product.getBeginTime()%></li>
         </ul>
         <ul class="rows">
             <li>结束时间：</li>
-            <li class="borderno">2010-02-02 16:30:00</li>
+            <li class="borderno"><%=product.getEndTime()%></li>
         </ul>
         <ul class="rows border-no">
             <li>起拍价：</li>
-            <li class="borderno">2.000</li>
+            <li class="borderno"><%=product.getBeginprice()%></li>
         </ul>
     </div>
     <div class="rg borders"><img src="images/ad20.jpg" width="270" height="185" alt="" /></div>
     <div class="cl"></div>
     <div class="top10 salebd">
+        <form action="addauction.do">
         <p>
             <label for="sale">出价：</label>
-            <input type="text"  class="inputwd" id="sale" value="4000"/>
+            <input type="text" name="price"  class="inputwd" id="sale" value="<%=product.getBeginprice()%>"/>
             <input name="" type="submit" value="竞 拍" class="spbg buttombg f14  sale-buttom" />
         </p>
         <p class="f14 red">不能低于最高竞拍价</p>
+        </form>
     </div>
     <div class="top10">
         <input name="" type="submit" value="刷 新" class="spbg buttombg f14" />
@@ -67,26 +76,19 @@
                 <li>竞拍价格</li>
                 <li class="borderno">竞拍人</li>
             </ul>
+        <%
+
+            List<Auction> auctionList=(List<Auction>)session.getAttribute("auctionList");
+            for(Auction auction:auctionList){
+        %>
             <ul class="rows">
-                <li>2010-01-05 12:50:01</li>
-                <li>50000,00</li>
-                <li class="borderno">张三</li>
+                <li><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(auction.getAuctiontime())%></li>
+                <li><%=auction.getPrice()%></li>
+                <li class="borderno"><%=auction.getLoginName()%></li>
             </ul>
-            <ul class="rows even">
-                <li>2010-01-05 11:50:01</li>
-                <li>40000,00</li>
-                <li class="borderno">李四</li>
-            </ul>
-            <ul class="rows">
-                <li>2010-01-05 10:50:01</li>
-                <li>30000,00</li>
-                <li class="borderno">王五</li>
-            </ul>
-            <ul class="rows even border-no">
-                <li>2010-01-05 09:50:01</li>
-                <li>20000,00</li>
-                <li class="borderno">李靖</li>
-            </ul>
+        <%
+            }
+        %>
         </div>
     </div>
     <!-- main end-->

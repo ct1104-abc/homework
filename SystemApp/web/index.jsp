@@ -11,6 +11,9 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <a href="login.do">用户登录</a>
+  <br/>
+  <br/>
+  <a href="managelogin.do">管理员登录</a>
   </body>
 </html>

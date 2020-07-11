@@ -5,16 +5,17 @@ import java.util.Date;
 public class Product {
     private Integer id;
     private String pname;
-    private Float beginprice;
-    private Float endprice;
+    private Double beginprice;
+    private Double endprice;
     private Date beginTime;
     private Date endTime;
     private String description;
+    private Integer beauction;
 
     public Product() {
     }
 
-    public Product(Integer id, String pname, Float beginprice, Float endprice, Date beginTime, Date endTime, String description) {
+    public Product(Integer id, String pname, Double beginprice, Double endprice, Date beginTime, Date endTime, String description, Integer beauction) {
         this.id = id;
         this.pname = pname;
         this.beginprice = beginprice;
@@ -22,6 +23,7 @@ public class Product {
         this.beginTime = beginTime;
         this.endTime = endTime;
         this.description = description;
+        this.beauction = beauction;
     }
 
     public Integer getId() {
@@ -40,19 +42,19 @@ public class Product {
         this.pname = pname;
     }
 
-    public Float getBeginprice() {
+    public Double getBeginprice() {
         return beginprice;
     }
 
-    public void setBeginprice(Float beginprice) {
+    public void setBeginprice(Double beginprice) {
         this.beginprice = beginprice;
     }
 
-    public Float getEndprice() {
+    public Double getEndprice() {
         return endprice;
     }
 
-    public void setEndprice(Float endprice) {
+    public void setEndprice(Double endprice) {
         this.endprice = endprice;
     }
 
@@ -80,6 +82,14 @@ public class Product {
         this.description = description;
     }
 
+    public Integer getBeauction() {
+        return beauction;
+    }
+
+    public void setBeauction(Integer beauction) {
+        this.beauction = beauction;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -90,6 +100,7 @@ public class Product {
                 ", beginTime=" + beginTime +
                 ", endTime=" + endTime +
                 ", description='" + description + '\'' +
+                ", beauction=" + beauction +
                 '}';
     }
 }

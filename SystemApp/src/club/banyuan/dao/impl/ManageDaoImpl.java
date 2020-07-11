@@ -24,6 +24,9 @@ public class ManageDaoImpl extends BaseDaoImpl implements ManageDao {
             }
         } catch (Exception throwables) {
             throwables.printStackTrace();
+        }finally {
+            this.closeResource(rs);
+            this.closeResource();
         }
         return manage;
     }

@@ -20,6 +20,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         String sql="insert into user (id,loginName,password,identityCode,mobile,address,idaddress)values(null,?,?,?,?,?,?)";
         Object[] params=new Object[]{user.getLoginName(),user.getPassword(),user.getIdentityCode(),user.getMobile(),user.getAddress(),user.getIdaddress()};
         int i=executeInsert(sql,params);
+        this.closeResource();
         return i;
     }
 
@@ -34,6 +35,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
             }
         } catch (Exception throwables) {
             throwables.printStackTrace();
+        }finally {
+            this.closeResource(rs);
+            this.closeResource();
         }
         return user;
     }

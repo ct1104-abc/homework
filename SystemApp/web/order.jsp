@@ -1,6 +1,7 @@
 <%@ page import="club.banyuan.eneity.Product" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: edz
   Date: 2020/7/8
@@ -25,17 +26,19 @@
         <div class="logout right"><a href="#" title="注销">注销</a></div>
     </div>
     <div class="forms">
+        <form action="usersearch.do">
         <label for="name">名称</label>
-        <input name="" type="text" class="nwinput" id="name"/>
+        <input name="pname" type="text" class="nwinput" id="name"/>
         <label for="names">描述</label>
-        <input name="" type="text" id="names" class="nwinput"/>
+        <input name="description" type="text" id="names" class="nwinput"/>
         <label for="time">开始时间</label>
-        <input name="" type="text" id="time" class="nwinput"/>
+        <input name="beginTime" type="text" id="time" class="nwinput"/>
         <label for="end-time">结束时间</label>
-        <input name="" type="text" id="end-time" class="nwinput" />
+        <input name="endTime" type="text" id="end-time" class="nwinput" />
         <label for="price">起拍价</label>
-        <input name="" type="text" id="price" class="nwinput" />
-        <input name="" type="button"  value="查询" class="spbg buttombg f14  sale-buttom"/>
+        <input name="beginprice" type="text" id="price" class="nwinput" />
+        <input name="" type="submit"  value="查询" class="spbg buttombg f14  sale-buttom"/>
+        </form>
     </div>
     <div class="items">
         <ul class="rows even strong">
@@ -55,15 +58,13 @@
         <ul class="rows">
             <li><a href="国书" title=""><%=product.getPname()%></a></li>
             <li class="list-wd"><%=product.getDescription()%></li>
-            <li><%=product.getBeginTime()%></li>
-            <li><%=product.getEndTime()%></li>
+            <li><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(product.getBeginTime())%></li>
+            <li><%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(product.getEndTime())%></li>
             <li><%=product.getBeginprice()%></li>
-            <li class="borderno red"><a href="auction.jsp">竞拍</a></li>
+            <li class="borderno red"><a href="detail.do?pid=<%=product.getId()%>">竞拍</a></li>
 
         </ul>
         <%
-            session.setAttribute("pid",product.getId());
-
             }
         %>
 
