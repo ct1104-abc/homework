@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.banyuan.dao.ProductDao">
+    <resultMap id="productMap" type="club.banyuan.entity.Product">
+        <id column="id" property="id"/>
+        <result column="pname" property="pname"/>
+        <result column="beginprice" property="beginprice"/>
+        <result column="endprice" property="endprice"/>
+        <result column="endprice" property="endprice"/>
+        <result column="endTime" property="endTime"/>
+        <result column="description" property="description"/>
+        <result column="beauction" property="beauction"/>
+    </resultMap>
+
+    <select id="selectall" parameterType="int" resultMap="productMap">
+        select * from product where beauction = #{beauction}
+    </select>
+
+    <select id="selectById" parameterType="int" resultType="club.banyuan.entity.Product">
+        select * from product where id=#{id}
+    </select>
+
+    <insert id="add" parameterType="club.banyuan.entity.Product">
+        <selectKey keyColumn="id" keyProperty="id" resultType="int">
+            select last_insert_id()
+        </selectKey>
+        insert into product(id,pname,beginprice,endprice,beginTime,endTime,description,beauction)
+        values(null,#{pname},#{beginprice},#{endprice},#{beginTime},#{endTime},#{description},0)
+    </insert>
+
+    <delete id="delete" parameterType="int" >
+        delete from product where id=#{id}
+    </delete>
+
+    <update id="updade" parameterType="club.banyuan.entity.Product" >
+        update product set pname=#{pname},beginprice=#{beginprice},endprice=#{endprice},beginTime=#{beginTime},endTime=#{endTime},description=#{description},beauction=0 where id=#{id}
+    </update>
+
+    <select id="selectBe" parameterType="int" resultMap="productMap">
+        select * from product where beauction=#{beauction}
+    </select>
+</mapper>
